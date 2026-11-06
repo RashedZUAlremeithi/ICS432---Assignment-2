@@ -1,0 +1,91 @@
+/* Styling is added in the file already linked by the original index.html. */
+* { box-sizing: border-box; }
+
+body {
+    margin: 0;
+    background: #f4f7f8;
+    color: #203338;
+    font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
+    line-height: 1.5;
+}
+
+.site-header {
+    padding: 28px max(20px, calc((100% - 1060px) / 2));
+    border-bottom: 1px solid #cfe3dc;
+    background: #e9f5f0;
+}
+
+.site-header h1 { margin: 0 0 8px; color: #135b48; font-size: 1.9rem; }
+.site-header p { margin: 4px 0; }
+
+main { max-width: 1100px; margin: 24px auto; padding: 0 20px; }
+main > section {
+    margin-bottom: 24px;
+    padding: 24px;
+    border: 1px solid #dbe5e7;
+    border-radius: 10px;
+    background: white;
+}
+h2 { margin-top: 0; font-size: 1.35rem; }
+.demo-note { color: #586d73; font-size: 0.85rem; }
+.table-scroll-note { display: none; color: #586d73; font-size: 0.85rem; }
+
+/* Keep the original table and four column headings visible. */
+#fleet-overview { overflow-x: auto; }
+table { width: 100%; min-width: 660px; border-collapse: collapse; }
+thead { background: #f1f7f4; text-align: left; }
+th, td { padding: 12px; border-bottom: 1px solid #e3eaec; vertical-align: middle; }
+thead th { color: #36534a; font-size: 0.85rem; white-space: nowrap; }
+.vehicle-id { font-size: 0.85rem; text-align: left; white-space: nowrap; }
+tbody tr:hover { background: #fafcfb; }
+.vehicle-model { display: flex; align-items: center; gap: 14px; }
+.vehicle-model__name { min-width: 120px; font-weight: 600; }
+.vehicle-model img, .photo-unavailable {
+    flex-shrink: 0;
+    width: 112px;
+    height: 76px;
+    border-radius: 6px;
+    background: #eff3f4;
+    object-fit: contain;
+}
+.photo-unavailable { display: grid; place-items: center; padding: 8px; text-align: center; font-size: 0.7rem; color: #586d73; }
+
+/* Status words and battery percentages work alongside the colours. */
+.status { display: inline-block; padding: 4px 10px; border-radius: 20px; font-size: 0.8rem; font-weight: 600; white-space: nowrap; }
+.status--available { background: #e4f4e9; color: #176140; }
+.status--charging { background: #e8f1fc; color: #215785; }
+.status--on-trip { background: #f0eafb; color: #684198; }
+.battery-value { display: block; margin-bottom: 6px; font-size: 0.85rem; font-weight: 600; }
+.battery-bar { --fill: #25805d; display: block; width: 110px; height: 9px; overflow: hidden; border: 0; border-radius: 10px; background: #e5ecee; accent-color: var(--fill); appearance: none; }
+.battery--medium { --fill: #a77313; }
+.battery--low { --fill: #bc3f3f; }
+.battery-bar::-webkit-progress-bar { background: #e5ecee; border-radius: 10px; }
+.battery-bar::-webkit-progress-value { background: var(--fill); border-radius: 10px; }
+.battery-bar::-moz-progress-bar { background: var(--fill); border-radius: 10px; }
+.photo-credits { margin-top: 18px; font-size: 0.8rem; color: #586d73; overflow-wrap: anywhere; }
+.photo-credits summary { cursor: pointer; font-weight: 600; }
+.photo-credits a { color: #14644f; }
+
+/* Style the existing form controls without replacing the form. */
+#calculator-form { display: grid; grid-template-columns: 180px minmax(180px, 1fr); align-items: center; gap: 14px 18px; max-width: 700px; }
+#calculator-form br { display: none; }
+select, input, button { padding: 11px 12px; border: 1px solid #b7c8ce; border-radius: 6px; font: inherit; }
+select, input { width: 100%; min-width: 0; background: white; color: #203338; }
+button { grid-column: 2; justify-self: start; border-color: #17674f; background: #17674f; color: white; cursor: pointer; font-weight: 600; }
+button:hover { background: #10553f; }
+select:focus-visible, input:focus-visible, button:focus-visible, summary:focus-visible { outline: 3px solid #6398d2; outline-offset: 3px; }
+#cost-result { padding: 14px; border: 1px solid #d9e8df; border-radius: 6px; background: #f2f8f4; }
+#cost-result.is-error { border-color: #e7b6b6; background: #fff3f3; color: #9a2929; }
+footer { padding: 18px 20px; text-align: center; color: #586d73; font-size: 0.85rem; }
+
+/* The fleet table scrolls inside its section instead of widening the page. */
+@media (max-width: 600px) {
+    .site-header { padding: 22px 16px; }
+    .site-header h1 { font-size: 1.6rem; }
+    main { padding: 0 12px; margin-top: 16px; }
+    main > section { padding: 16px; }
+    .table-scroll-note { display: block; }
+    #calculator-form { display: block; }
+    #calculator-form label { display: block; margin: 16px 0 6px; }
+    #calculate-button { margin-top: 16px; }
+}
